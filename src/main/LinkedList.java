@@ -109,8 +109,9 @@ public class LinkedList<T>
             // If curr is null, then we have reached the end of the list and prev is our new head
             if (curr == null)
             {
+                // Is this list self-linking?
                 if (prev == this)
-                    return prev.next;
+                    return prev.next; // The next element should be the new "proper" head
                 return prev;
             }
             // Preserve the original order of the two nodes
@@ -124,8 +125,9 @@ public class LinkedList<T>
             // If curr.next, or second, is null, then we have reached the end of the list and curr is our new head
             if (second == null)
             {
+                // Is this list self-linking?
                 if (curr == this)
-                    return curr.next;
+                    return curr.next; // The next element should be the new "proper" head
                 return curr;
             }
             curr = second.next;
