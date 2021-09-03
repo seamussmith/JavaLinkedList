@@ -8,5 +8,8 @@ public class App
         for (int i = 2; i != 10; ++i)
             list.add(i);
         
+        System.out.println(list);
+        var inversed = list.inverse();
+        System.out.println(inversed);        
     }
 }
