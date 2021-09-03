@@ -1,9 +1,15 @@
 package main;
 
+class SelfLinkingList extends Exception { 
+    public SelfLinkingList(String errorMessage) {
+        super(errorMessage);
+    }
+}
+
 public class LinkedList<T>
 {
     public T data;
-    public LinkedList<T> next;
+    private LinkedList<T> next;
 
     public LinkedList() {}
     public LinkedList(T data)
@@ -18,6 +24,21 @@ public class LinkedList<T>
     public LinkedList(LinkedList<T> next)
     {
         this.next = next;
+    }
+
+    public LinkedList<T> getNext()
+    {
+        return next;
+    }
+
+    public LinkedList<T> setNext(LinkedList<T> newNext) throws SelfLinkingList
+    {
+        if (newNext != null)
+        {
+            if (newNext.getNext() == this)
+                throw new SelfLinkingList("A LinkedList's next property cannot point to a LinkedList that is pointing to itself");
+        }
+        return next = newNext;
     }
 
     // Get the n-th node of the LinkedList
@@ -67,7 +88,9 @@ public class LinkedList<T>
         var curr = this;
         while (curr.next != null)
         {
-            sbuild.append(String.format("[" + curr.data.toString() + "]->"));
+            sbuild.append("[" + curr.data.toString() + "]->");
+            if (curr.next == this)
+                return sbuild.append("{SELF LINKING DETECTED}...").toString();
             curr = curr.next;
         }
         sbuild.append("[" + curr.data.toString() + "]");
