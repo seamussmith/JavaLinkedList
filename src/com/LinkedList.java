@@ -2,9 +2,10 @@ package com;
 
 public class LinkedList<T>
 {
-    T data;
-    LinkedList<T> next;
+    public T data;
+    public LinkedList<T> next;
 
+    public LinkedList() {}
     public LinkedList(T data)
     {
         this.data = data;
@@ -29,5 +30,19 @@ public class LinkedList<T>
         while (curr.next != null)
             curr = curr.next;
         curr.next = newLink;
+    }
+
+    @Override
+    public String toString() {
+        var sbuild = new StringBuilder();
+        
+        var curr = this;
+        while (curr.next != null)
+        {
+            sbuild.append(String.format("[" + curr.data.toString() + "]->"));
+            curr = curr.next;
+        }
+        sbuild.append("[" + curr.data.toString() + "]");
+        return sbuild.toString();
     }
 }
