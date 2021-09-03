@@ -33,7 +33,8 @@ public class LinkedList<T>
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         var sbuild = new StringBuilder();
         
         var curr = this;
@@ -44,5 +45,22 @@ public class LinkedList<T>
         }
         sbuild.append("[" + curr.data.toString() + "]");
         return sbuild.toString();
+    }
+
+    public LinkedList<T> inverse()
+    {
+        LinkedList<T> curr = this;
+        LinkedList<T> prev = null;
+        while (curr != null)
+        {
+            var first = curr;
+            var second = curr.next;
+
+            first.next = prev;
+            curr = second.next;
+            prev = second;
+            second.next = first;
+        }
+        return prev;
     }
 }
