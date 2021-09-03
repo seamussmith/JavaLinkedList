@@ -40,9 +40,8 @@ public class LinkedList<T>
         // Once we exit the loop, curr will be the n-th nod.
         return curr;
     }
-    
     // Sets the next property of the last node to a new node with the given data
-    public void append(T data)
+    public void add(T data)
     {
         var newLink = new LinkedList<>(data);
         // Find the last node of the linked list
