@@ -21,7 +21,7 @@ public class LinkedList<T>
     }
 
     // Get the n-th node of the LinkedList
-    public LinkedList<T> index(int idx)
+    public LinkedList<T> get(int idx)
     {
         // Index should not be lower than zero
         if (idx < 0)
@@ -53,7 +53,7 @@ public class LinkedList<T>
 
     public LinkedList<T> insert(T data, int idx)
     {
-        var insertionPoint = this.index(idx-1);
+        var insertionPoint = this.get(idx-1);
         var newNode = new LinkedList<>(data, insertionPoint.next);
         insertionPoint.next = newNode;
         return newNode;
