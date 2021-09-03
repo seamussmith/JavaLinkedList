@@ -10,10 +10,22 @@ public class LinkedList<T>
     {
         this.data = data;
     }
+    public LinkedList(T data, LinkedList<T> next)
+    {
+        this.data = data;
+        this.next = next;
+    }
+    public LinkedList(LinkedList<T> next)
+    {
+        this.next = next;
+    }
 
     // Get the n-th node of the LinkedList
     public LinkedList<T> index(int idx)
     {
+        // Index should not be lower than zero
+        if (idx < 0)
+            throw new IndexOutOfBoundsException();
         // Loop until i is the index.
         // If i is zero, the for loop just doesn't run and it just returns the linked list itself
         var curr = this;
@@ -40,6 +52,14 @@ public class LinkedList<T>
         curr.next = newLink;
     }
 
+    public LinkedList<T> insert(T data, int idx)
+    {
+        var insertionPoint = this.index(idx-1);
+        var newNode = new LinkedList<>(data, insertionPoint.next);
+        insertionPoint.next = newNode;
+        return newNode;
+    }
+
     @Override
     public String toString()
     {
@@ -55,6 +75,9 @@ public class LinkedList<T>
         return sbuild.toString();
     }
 
+    // Reverse all the links in the list
+    // Reversing a linked list results the head of the list to become the tail
+    // Returns the new head of the list
     public LinkedList<T> inverse()
     {
         LinkedList<T> curr = this;
