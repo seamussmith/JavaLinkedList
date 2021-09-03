@@ -1,11 +1,5 @@
 package main;
 
-class SelfLinkingList extends Exception { 
-    public SelfLinkingList(String errorMessage) {
-        super(errorMessage);
-    }
-}
-
 public class LinkedList<T>
 {
     public T data;
