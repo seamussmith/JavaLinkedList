@@ -26,11 +26,6 @@ public class LinkedList<T>
         this.next = next;
     }
 
-    public LinkedList<T> getNext()
-    {
-        return next;
-    }
-
     public boolean isSelfLinking()
     {
         var curr = this;
@@ -43,10 +38,6 @@ public class LinkedList<T>
         return false;
     }
 
-    public LinkedList<T> setNext(LinkedList<T> newNext) throws SelfLinkingList
-    {
-        return next = newNext;
-    }
 
     // Get the n-th node of the LinkedList
     public LinkedList<T> get(int idx)
@@ -69,7 +60,7 @@ public class LinkedList<T>
         return curr;
     }
     // Sets the next property of the last node to a new node with the given data
-    public void add(T data)
+    public LinkedList<T> add(T data)
     {
         var newLink = new LinkedList<>(data);
         // Find the last node of the linked list
@@ -77,6 +68,7 @@ public class LinkedList<T>
         while (curr.next != null)
             curr = curr.next;
         curr.next = newLink;
+        return newLink;
     }
 
     public LinkedList<T> insert(T data, int idx)
