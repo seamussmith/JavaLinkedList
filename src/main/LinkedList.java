@@ -9,7 +9,7 @@ class SelfLinkingList extends Exception {
 public class LinkedList<T>
 {
     public T data;
-    private LinkedList<T> next;
+    public LinkedList<T> next;
 
     public LinkedList() {}
     public LinkedList(T data)
