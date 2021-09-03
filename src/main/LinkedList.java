@@ -31,13 +31,20 @@ public class LinkedList<T>
         return next;
     }
 
+    public boolean isSelfLinking()
+    {
+        var curr = this;
+        while (curr.next != null)
+        {
+            if (curr.next == this)
+                return true;
+            curr = curr.next;
+        }
+        return false;
+    }
+
     public LinkedList<T> setNext(LinkedList<T> newNext) throws SelfLinkingList
     {
-        if (newNext != null)
-        {
-            if (newNext.getNext() == this)
-                throw new SelfLinkingList("A LinkedList's next property cannot point to a LinkedList that is pointing to itself");
-        }
         return next = newNext;
     }
 
@@ -108,7 +115,7 @@ public class LinkedList<T>
         {
             // In the case of a list with an even number of elements:
             // If curr is null, then we have reached the end of the list and prev is our new head
-            if (curr == null)
+            if (curr == null || curr.next == this)
                 return prev;
             // Preserve the original order of the two nodes
             var first = curr;
