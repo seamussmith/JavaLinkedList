@@ -83,19 +83,25 @@ public class LinkedList<T>
         LinkedList<T> prev = null;
         while (true)
         {
+            // In the case of a list with an even number of elements:
+            // If curr is null, then we have reached the end of the list and prev is our new head
             if (curr == null)
-                break;
+                return prev;
             // Preserve the original order of the two nodes
             var first = curr;
             var second = curr.next;
-
+            
+            // 
             first.next = prev;
             prev = second;
+
+            // In the case of a list with an odd number of elements:
+            // If curr.next, or second, is null, then we have reached the end of the list and curr is our new head
             if (second == null)
                 return curr;
             curr = second.next;
+            
             second.next = first;
         }
-        return prev;
     }
 }
