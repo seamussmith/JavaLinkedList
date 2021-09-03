@@ -4,6 +4,11 @@ public class App
 {
     public static void main(String[] args) 
     {
-        System.out.println("Hello, World!");
+        var list = new LinkedList<>(1);
+        for (int i = 2; i != 11; ++i)
+            list.append(i);
+        var newhead = list.inverse();
+        System.out.println(newhead);
     }
 }
+ 
