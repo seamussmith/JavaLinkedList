@@ -81,15 +81,19 @@ public class LinkedList<T>
     {
         LinkedList<T> curr = this;
         LinkedList<T> prev = null;
-        while (curr != null)
+        while (true)
         {
+            if (curr == null)
+                break;
             // Preserve the original order of the two nodes
             var first = curr;
             var second = curr.next;
 
             first.next = prev;
-            curr = second.next;
             prev = second;
+            if (second == null)
+                return curr;
+            curr = second.next;
             second.next = first;
         }
         return prev;
